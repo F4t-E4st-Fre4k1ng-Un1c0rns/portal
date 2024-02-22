@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from src.api.router import main_router
+from src.api.v1.router import v1_router
 
 app = FastAPI(
-    title="ghidra-event-service",
+    title="event-service",
 )
 
-app.include_router(main_router)
+app.include_router(v1_router)

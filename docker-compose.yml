@@ -1,10 +1,12 @@
 version: "3"
 
+name: portal
+
 services:
   event-service:
     container_name: event-service
     restart: always
-    build: ./hydra-event-service
+    build: ./event
     ports:
       - 8001:8000
     environment:
@@ -18,7 +20,7 @@ services:
     develop:
       watch:
       - action: sync
-        path: ./hydra-event-service
+        path: ./event
         target: .
 
   postgres-event-service:
@@ -27,7 +29,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./hydra-event-service/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
+      - ./event/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=event_service
@@ -38,7 +40,7 @@ services:
   auth-service:
     container_name: auth-service
     restart: always
-    build: ./hydra-auth-service
+    build: ./auth
     ports:
       - 8080:8080
     environment:

@@ -12,3 +12,7 @@ class UserProfileSchema(BaseModel):
 
 class UserSchema(BaseModel):
     id: uuid.UUID
+
+
+class UserListSchema(BaseModel):
+    users: list[UserSchema]

@@ -5,7 +5,7 @@ from fastapi import HTTPException
 import httpx
 from sqlalchemy.sql.compiler import ResultColumnsEntry
 
-from src.schemas.auth import UserSchema, UserProfileSchema
+from src.schemas.auth import UserListSchema, UserSchema, UserProfileSchema
 from src.settings import get_settings
 
 
@@ -22,6 +22,17 @@ class AuthService:
         if not response.is_success:
             raise HTTPException(status_code=500, detail="Auth serivce error")
         return UserProfileSchema.parse_raw(response.text)
+    
+    async def get_users_list(self, ids: list[uuid.UUID]) -> UserListSchema:
+        response = httpx.post(
+            self.scheme_url + "/api/v1/auth/userList",
+            headers=self.headers,
+            json={"users": [{"id": str(id)} for id in ids]},
+        )
+        print(response.request)
+        if not response.is_success:
+            raise HTTPException(status_code=500, detail="Auth serivce error")
+        return UserListSchema.parse_raw(response.text)
 
     async def authenticate(self, token: str) -> UserSchema:
         response = httpx.post(

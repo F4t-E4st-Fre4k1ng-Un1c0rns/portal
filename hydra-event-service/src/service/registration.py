@@ -10,12 +10,13 @@ from src.service.auth import get_auth_service
 
 class RegistrationService:
     async def get_registered_users(self, ticket_id):
-        request = select(TicketRegistration).filter(
+        request = select(TicketRegistration.user_id).filter(
             TicketRegistration.ticket_id == ticket_id
         )
         async with async_session_maker() as session:
             result = await session.execute(request)
-        return result.scalars().all()
+        service = get_auth_service()
+        raise NotImplementedError()
 
     async def count_registered_users(self, ticket_id):
         request = select(func.count(TicketRegistration.id)).filter(

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ghidra-event-service"
+name = "src"
 version = "0.0.0"
 description = ""
 authors = ["Beaver <beavernotacat@gmail.com>"]
@@ -10,7 +10,6 @@ python = "^3.11"
 fastapi = "^0.109.2"
 uvicorn = "^0.27.1"
 SQLAlchemy = "^2.0.26"
-psycopg2-binary = "^2.9.9"
 pydantic-settings = "^2.1.0"
 asyncpg = "^0.29.0"
 fastapi-storages = "^0.2.1"

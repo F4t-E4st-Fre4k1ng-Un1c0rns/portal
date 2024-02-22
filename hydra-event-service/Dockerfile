@@ -2,7 +2,6 @@ FROM python:3.11.4
 
 WORKDIR /code
 
-#Cache dependencies
 RUN apt-get install make
 COPY Makefile .
 COPY pyproject.toml .

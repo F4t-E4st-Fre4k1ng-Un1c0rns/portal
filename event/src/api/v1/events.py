@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from typing import Annotated, Optional
-from fastapi import APIRouter, Depends, Header, HTTPException, Body
+from typing import Annotated
+from fastapi import APIRouter, Depends, Header
 
 from src.schemas.event import (
     GetEventList,
@@ -19,35 +19,37 @@ from src.service.registration import get_registraton_service
 from src.service.sport_type import get_sport_type_service
 
 
-v1 = APIRouter(
-    prefix="/v1",
+events_router = APIRouter(
+    prefix="/events",
 )
 
 
-@v1.get("/events", response_model=list[GetEventList])
+@events_router.get("/", response_model=list[GetEventList])
 async def listevents(
     filter: Annotated[EventListFilterSchema, Depends(EventListFilterSchema)]
 ):
     return await get_event_service().get_event_list(filter)
 
 
-@v1.get("/events/{event_id}", response_model=GetEvent)
+@events_router.get("/{event_id}", response_model=GetEvent)
 async def get_event(event_id: UUID):
     return await get_event_service().get_event(event_id)
 
 
-@v1.get("/sport_types", response_model=list[SportTypeSchema])
+@events_router.get("/sport_types", response_model=list[SportTypeSchema])
 async def list_sport_types():
     return await get_sport_type_service().list_sport_types()
 
 
-@v1.post("/events/register", response_model=RegistrationSchema)
+@events_router.post("/register", response_model=RegistrationSchema)
 async def register_on_event(
     register: PostRegister, authorization: Annotated[str, Header()]
 ):
     return await get_registraton_service().regiser(register.ticket_id, authorization)
 
 
-@v1.get("/events/registrations/{ticket_id}", response_model=list[GetEventParticipants])
+@events_router.get(
+    "/registrations/{ticket_id}", response_model=list[GetEventParticipants]
+)
 async def get_registered_esurs(ticket_id: UUID):
     return await get_registraton_service().get_registered_users(ticket_id)

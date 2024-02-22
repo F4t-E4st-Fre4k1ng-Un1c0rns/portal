@@ -3,7 +3,6 @@ import uuid
 from fastapi import HTTPException
 
 import httpx
-from sqlalchemy.sql.compiler import ResultColumnsEntry
 
 from src.schemas.auth import UserSchema, UserProfileSchema
 from src.settings import get_settings
@@ -19,8 +18,10 @@ class AuthService:
             headers=self.headers,
             json={"id": str(id)},
         )
+
         if not response.is_success:
             raise HTTPException(status_code=500, detail="Auth serivce error")
+
         return UserProfileSchema.parse_raw(response.text)
 
     async def authenticate(self, token: str) -> UserSchema:
@@ -29,8 +30,10 @@ class AuthService:
             headers=self.headers,
             json={"token": token},
         )
+
         if not response.is_success:
             raise HTTPException(status_code=500, detail="Auth serivce error")
+
         return UserSchema.parse_raw(response.text)
 
 

@@ -1,0 +1,1 @@
+<template>Awesome participants</template>

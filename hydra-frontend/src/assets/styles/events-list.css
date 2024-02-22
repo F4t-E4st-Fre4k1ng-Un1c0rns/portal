@@ -1,0 +1,44 @@
+& .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  & h1 {
+    font-size: 37px;
+    font-weight: 600;
+  }
+
+  & .filters {
+    display: flex;
+    gap: 22px;
+    flex-direction: row;
+    & input {
+      width: 300px;
+      font-size: 20px;
+      padding: 9px;
+      padding-left: calc(9px * 2 + 15px);
+      border: none;
+      border-radius: var(--small-radius);
+
+      background-image: url(@/assets/images/icons/search.svg);
+      background-position: 9px center;
+      background-repeat: no-repeat;
+
+    }
+    & button {
+      width: 41px;
+      height: 41px;
+      border: none;
+      border-radius: var(--small-radius);
+      background-color: var(--light);
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: space-between;
+}

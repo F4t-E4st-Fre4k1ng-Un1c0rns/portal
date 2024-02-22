@@ -1,0 +1,61 @@
+footer {
+  margin-top: 130px;
+  padding: 50px var(--content-padding);
+
+  border-top: solid 1px;
+
+  background-color: var(--dark);
+  color: var(--light);
+
+  & nav {
+    display: flex;
+    gap: 67px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    & > * {
+      align-self: flex-start;
+    }
+
+    & img {
+      filter: invert();
+    }
+
+    & .logo {
+      height: 60px;
+    }
+
+    & .group {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+
+      & p {
+        font-size: 24px;
+        margin-top: 0;
+      }
+    }
+
+    & .social-link {
+      height: 27px;
+    }
+
+    & .social-link-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+
+      height: 40px;
+
+      & .vk {
+        height: 26px;
+      }
+      & .telegram {
+        height: 36px;
+      }
+    }
+  }
+}

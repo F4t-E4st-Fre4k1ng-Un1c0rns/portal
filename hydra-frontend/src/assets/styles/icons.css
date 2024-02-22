@@ -1,0 +1,42 @@
+.icon::before {
+  content: '';
+  display: inline-block;
+  mask-size: cover;
+
+  margin-right: 10px;
+  vertical-align: baseline;
+}
+time::before {
+  width: 17px;
+  height: 19px;
+  mask-image: url(@/assets/images/icons/calendar.svg);
+}
+
+.location::before {
+  width: 15px;
+  height: 19px;
+  mask-image: url(@/assets/images/icons/location.svg);
+}
+
+.people::before {
+  width: 17px;
+  height: 16px;
+  mask-image: url(@/assets/images/icons/people.svg);
+}
+
+button.image-icon {
+  background-color: transparent;
+  border: none;
+
+  & img {
+    height: 21px;
+    width: 10px;
+  }
+
+  &.prev img {
+    margin-right: 26px;
+  }
+  &.next img {
+    margin-left: 26px;
+  }
+}

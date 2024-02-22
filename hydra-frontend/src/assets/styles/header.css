@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 22px;
+  padding-bottom: 22px;
+  padding-left: 130px;
+  padding-right: 130px;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  & a {
+    align-self: center;
+  }
+
+  & .group {
+    display: flex;
+    gap: 42px;
+  }
+}

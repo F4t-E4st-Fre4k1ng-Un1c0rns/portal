@@ -17,11 +17,6 @@ services:
       - AUTH_SERVICE_URL=http://auth-service:8080
     depends_on:
       - postgres-event-service
-    develop:
-      watch:
-      - action: sync
-        path: ./event
-        target: .
 
   postgres-event-service:
     container_name: postgres-event-service

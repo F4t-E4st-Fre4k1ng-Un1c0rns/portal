@@ -33,8 +33,13 @@ const openLoginPage = () => {
       <img src="@/assets/images/icons/close.svg" alt="Закрыть" />
     </button>
     <button v-if="!authStore.loggedIn" @click="openLoginPage()" class="auth-button">Авторизация</button>
-    <p v-else>{{ authStore.user.name }} {{ authStore.user.secondName }}</p>
-    <!-- TODO: fix design for logged in users -->
+    <div v-else>
+      <p class="account-name">{{ authStore.user.name }} {{ authStore.user.secondName }}</p>
+      <button 
+        @click="authStore.$reset()" class="auth-button">
+        Выйти
+      </button>
+    </div>
   </dialog>
 
   <LoginRegisterPopup ref="loginPopup" />

@@ -45,6 +45,12 @@ dialog.auth-dialog {
       margin-left: 14px;
     }
   }
+  
+  & .account-name {
+    color: var(--light);
+    font-weight: 600;
+    font-size: 20px;
+  }
 
   &::backdrop {
     filter: brightness(0.6);

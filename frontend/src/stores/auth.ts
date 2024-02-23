@@ -24,6 +24,12 @@ export const useAuthStore = defineStore('auth', () => {
   })
   const loggedIn = ref(false)
   
+  const $reset = () => {
+    localStorage.setItem('token', '')
+    token.value = ''
+    loggedIn.value = false
+  }
+  
   watch(token, (token: string) => {
     localStorage.setItem('token', token)
   })
@@ -36,5 +42,5 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
   
-  return { token, user, loggedIn, age }
+  return { token, user, loggedIn, age, $reset }
 })

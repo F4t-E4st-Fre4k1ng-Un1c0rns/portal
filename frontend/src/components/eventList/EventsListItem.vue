@@ -1,25 +1,35 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { type EventBasic } from '@/types/event'
 import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
+import EventRegistrationPopup from '@/components/popups/EventRegistrationPopup.vue';
 
-const props = defineProps<{
+let props = defineProps<{
   event: EventBasic
 }>()
+
+let registrationPopup = ref<typeof EventRegistrationPopup | undefined>()
+
+let selectedTicket = ref<number>(0)
+console.log(props.event.tickets, selectedTicket.value)
 </script>
 
 <template>
   <div class="card shadow">
-    <div class="banner" :style="`background-image: url(${event.banner});`">
+    <router-link class="banner" :style="`background-image: url(${event.banner});`"
+      :to="{ name: 'event-overview', params: { id: event.id } }">
       <p class="sport-name">{{ event.sport_type.name }}</p>
-    </div>
+    </router-link>
     <div class="info">
       <router-link class="name"
         :to="{ name: 'event-overview', params: { id: event.id } }">
-        {{ event.name }}
+        {{ event.title }}
       </router-link>
-      <select class="ticket-select">
-        <option>Тикеты</option>
+      <select class="ticket-select" v-model="selectedTicket">
+        <option v-for="(ticket, index) in event.tickets" :key="ticket.id" :value="index">{{ ticket?.title }}</option>
       </select>
+      <p class="price">{{ event.tickets[selectedTicket]?.price }} ₽</p>
       <div class="date-and-time">
         <p>
           <time :datetime="event.participation_start.toISOString()" class="icon">
@@ -28,7 +38,13 @@ const props = defineProps<{
         </p>
         <p class="icon location">{{ event.place.address }}</p>
       </div>
-      <router-link class="button" :to="event.id">Регистрация</router-link>
+      <button class="button"
+        @click="() => { registrationPopup.openDialog() }">
+        Регистрация
+      </button>
+      <EventRegistrationPopup
+        :event="event" :ticket="event.tickets[selectedTicket]"
+        ref="registrationPopup" v-if="event.tickets[selectedTicket]" />
     </div>
   </div>
 </template>

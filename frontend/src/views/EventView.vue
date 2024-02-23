@@ -15,6 +15,7 @@ let event: DatabaseEvent | undefined = undefined
 
 if (typeof route.params.id === "string") {
   getEventById(route.params.id).then((loadedEvent: DatabaseEvent) => {
+    console.log(loadedEvent)
     event = loadedEvent
     loaded.value = LoadingState.Ok
   }).catch((error: Error) => {
@@ -28,9 +29,9 @@ if (typeof route.params.id === "string") {
 </script>
 <template>
   <div v-if="loaded == LoadingState.Ok && event !== undefined">
-    <section class="big-banner">
+    <section class="big-banner" :style="`--background-image: url(${event.banner})`">
       <div class="group">
-        <h1>{{ event.name }}</h1>
+        <h1>{{ event.title }}</h1>
         <div class="info">
           <time class="icon" :datetime="event.participation_start.toISOString()">
             {{ dateStartAndEndToHumanReadableConverter(event.participation_start, event.participation_end) }}

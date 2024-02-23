@@ -1,3 +1,6 @@
+<script setup lang="ts">
+  import LoginDialog from '@/components/popups/LoginDialog.vue'
+</script>
 <template>
   <header>
     <nav>
@@ -14,7 +17,7 @@
 
       <div class="group">
         <a href="#">RUS</a>
-        <a href=""><img src="../assets/images/icons/burger.svg" /></a>
+        <LoginDialog />
       </div>
     </nav>
   </header>

@@ -8,7 +8,7 @@ const props = defineProps<{
 <template>
   <div class="champion-item shadow">
     <section class="about">
-      <p class="title">{{ props.event.name }}</p>
+      <p class="title">{{ props.event.title }}</p>
 
       <div class="info">
         <!--<p>

@@ -1,0 +1,28 @@
+h2, div.profile {
+  margin-top: 25px;
+  margin-bottom: 0;
+}
+form {
+  &>* {
+    margin-top: 25px;
+    margin-bottom: 0;
+  }
+  & fieldset {
+    border: none;
+    padding: 0;
+    
+    & legend {
+      display: flex;
+      width: 100%;
+    }
+    & legend::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: var(--accent);
+      margin: auto;
+      margin-left: 12px;
+    }
+  }
+}

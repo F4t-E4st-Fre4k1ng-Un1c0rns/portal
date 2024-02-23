@@ -35,7 +35,9 @@ function changeSlider(delta: number) {
     <section>
       <header>
         <h2>Ближайшие ожидаемые события</h2>
-        <a class="more-info shadow" href="">Афиша</a>
+        <router-link :to="{ name: 'events-list' }" class="more-info shadow">
+          Афиша
+        </router-link>
       </header>
       <div class="slider nearest-event-slider">
         <button class="prev image-icon" @click="changeSlider(-1)">
@@ -72,16 +74,7 @@ function changeSlider(delta: number) {
     </section>
 
     <section class="creators">
-      <div class="slider creators-slider">
-        <button class="prev image-icon" @click="changeSlider(-1)">
-          <img src="@/assets/images/icons/prev.svg" alt="Предыдушее событие" />
-        </button>
-        <div class="shadow active"></div>
-        <button class="next image-icon" @click="changeSlider(1)">
-          <img src="@/assets/images/icons/next.svg" alt="Следующее событие" />
-        </button>
-      </div>
-
+      <h2 class="creators-title">Организация мероприятий</h2>
       <section class="opportunity" id="create">
         <div>
           <h3>Создавайте</h3>

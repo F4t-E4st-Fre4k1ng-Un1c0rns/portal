@@ -1,0 +1,52 @@
+button {
+  background-color: transparent;
+  border: none;
+}
+
+dialog.auth-dialog {
+  color: var(--dark);
+
+  margin-right: 0;
+  margin-top: 91px;
+  background-color: var(--dark);
+
+  border: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+
+  width: 445px;
+
+  &[open] {
+    display: flex;
+  }
+  flex-direction: column;
+  gap: 130px;
+
+  padding: 45px 34px;
+
+  & .close {
+    width: fit-content;
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .auth-button {
+    background-color: var(--light);
+    border-radius: var(--small-radius);
+    text-align: center;
+    padding: 13px;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 600;
+
+    &::after {
+      content: url(@/assets/images/icons/login.svg);
+      vertical-align: middle;
+      margin-left: 14px;
+    }
+  }
+
+  &::backdrop {
+    filter: brightness(0.6);
+  }
+}

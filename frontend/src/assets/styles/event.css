@@ -2,7 +2,7 @@
   background-color: #738b31;
 
   &::before {
-    background-image: url(../images/tempory-assets/cyclist.jpg);
+    background-image: var(--background-image);
   }
 
   & .group {
@@ -42,7 +42,8 @@
 
       &:hover {
         text-decoration: none;
-        opacity: 0.8;
+        color: var(--white);
+        background-color: var(--accent);
       }
     }
   }

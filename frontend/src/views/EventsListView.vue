@@ -10,6 +10,7 @@ let loaded = ref(LoadingState.Loading)
 let events: EventBasic[] | undefined = undefined
 
 getData().then((loadedEvents: EventBasic[]) => {
+console.log(loadedEvents)
   events = loadedEvents
   loaded.value = LoadingState.Ok
 }).catch((error: Error) => {

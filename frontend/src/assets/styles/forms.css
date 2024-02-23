@@ -1,0 +1,75 @@
+form {
+  width: 100%;
+  gap: 25px;
+
+  & input {
+    padding: 13px 20px;
+    border-radius: var(--small-radius);
+    border: 1px solid var(--accent);
+
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 23px;
+
+    &::placeholder {
+      color: var(--accent);
+    }
+  }
+
+  & .date-input {
+    display: flex;
+    gap: 13px;
+
+    margin-top: 13px;
+
+    & input {
+      padding: 10px;
+
+      -moz-appearance:textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+    & .day, & .month {
+      width: 33px;
+    }
+    & .year {
+      width: 45px;
+    }
+  }
+
+  & fieldset.radio {
+    border: none;
+    padding: 0;
+
+    & legend {
+      margin-bottom: 13px;
+    }
+
+    & label {
+      margin-right: 25px;
+      margin-left: 13px;
+    }
+  }
+
+  & .recover {
+    text-align: right;
+
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  & .auth-button {
+    background-color: var(--accent);
+    color: var(--light);
+    padding: 13px;
+    border: none;
+    border-radius: var(--small-radius);
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+  }
+}

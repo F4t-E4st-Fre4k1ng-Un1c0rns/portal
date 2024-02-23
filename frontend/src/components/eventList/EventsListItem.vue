@@ -39,7 +39,7 @@ console.log(props.event.tickets, selectedTicket.value)
         <p class="icon location">{{ event.place.address }}</p>
       </div>
       <button class="button"
-        @click="() => { registrationPopup.openDialog() }">
+        @click="() => { registrationPopup?.openDialog() }">
         Регистрация
       </button>
       <EventRegistrationPopup

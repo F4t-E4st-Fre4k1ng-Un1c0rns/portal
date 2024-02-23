@@ -2,7 +2,7 @@ import { type RegisterSchema } from '@/types/registerSchema'
 import { type LoginSchema } from '@/types/loginSchema'
 import { type User } from '@/types/user'
 
-async function register(schema: RegisterSchema): string {
+async function register(schema: RegisterSchema): Promise<string> {
   let request = await fetch(`${import.meta.env.VITE_AUTH_BASE_API}/register`, {
     method: "POST",
     headers: {
@@ -20,7 +20,7 @@ async function register(schema: RegisterSchema): string {
   })
 }
 
-async function login(schema: LoginSchema): string {
+async function login(schema: LoginSchema): Promise<string> {
   let request = await fetch(`${import.meta.env.VITE_AUTH_BASE_API}/login`, {
     method: "POST",
     headers: {

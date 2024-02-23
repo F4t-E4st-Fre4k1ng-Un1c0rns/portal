@@ -71,7 +71,7 @@ services:
       - ./nginx/mime.types:/etc/nginx/mime.types
       - web:/app/dist
     ports:
-      - 80:80
+      - 800:80
     depends_on:
       - event-service
       - auth-service

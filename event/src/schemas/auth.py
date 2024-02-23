@@ -8,7 +8,7 @@ class UserProfileSchema(BaseModel):
     username: str
     email: str
     role: str
-    isSponsor: bool | None = None 
+    isSponsor: bool | None = None
     inn: str | None = None
     ogrn: str | None = None
     sponsorAdress: str | None = None

@@ -23,13 +23,15 @@ class AuthService:
             raise HTTPException(status_code=500, detail="Auth serivce error")
 
         return UserProfileSchema.parse_raw(response.text)
-    
+
     async def get_users_list(self, ids: list[uuid.UUID]) -> list[UserProfileSchema]:
         users = [{"id": str(id)} for id in ids]
         response = httpx.post(
             self.scheme_url + "/api/v1/auth/userList",
             headers=self.headers,
-            json={"users": users,}
+            json={
+                "users": users,
+            },
         )
         if not response.is_success:
             raise HTTPException(status_code=500, detail="Auth serivce error")

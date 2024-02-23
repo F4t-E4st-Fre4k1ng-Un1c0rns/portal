@@ -47,7 +47,6 @@ async def register_on_event(
     return await get_registraton_service().regiser(register.ticket_id, authorization)
 
 
-@events_router.get("/registrations/{ticket_id}",
-        response_model=list[UserProfileSchema])
+@events_router.get("/registrations/{ticket_id}", response_model=list[UserProfileSchema])
 async def get_registered_esurs(ticket_id: UUID):
     return await get_registraton_service().get_registered_users(ticket_id)

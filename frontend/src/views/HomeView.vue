@@ -6,9 +6,12 @@ import { getData } from '@/services/HomeData'
 // Champions data mocking
 const events: EventBasic[] = getData()
 
+import honorIceRun from '@/assets/images/tempory-assets/honor-ice-run.png'
+import hockey from '@/assets/images/tempory-assets/hockey.jpg'
+
 const sliderImages = [
-  'src/assets/images/tempory-assets/honor-ice-run.png',
-  'src/assets/images/tempory-assets/hockey.jpg'
+  honorIceRun,
+  hockey
 ]
 let currentSliderImage = ref(0)
 function changeSlider(delta: number) {

@@ -48,7 +48,9 @@ async function getUser(token: string): Promise<User> {
   if (!request.ok) {
     throw Error
   }
-  return await request.json()
+  let json = await request.json()
+  json.dateOfBirth = new Date(json.dateOfBirth)
+  return await json
 }
 
 export { register, login, getUser }

@@ -6,11 +6,9 @@ import com.yarvin.auth_service.store.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -46,7 +44,7 @@ public class AuthController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/userList")
     public List<AuthentificationIdResponseDto> authArrayId(@RequestBody UuidListDto request){
-        List<AuthentificationIdResponseDto> users = userService.GetUsersById(request.getList());
+        List<AuthentificationIdResponseDto> users = userService.GetUsersById(request.users);
 
         return users;
     }

@@ -29,18 +29,23 @@ export const useAuthStore = defineStore('auth', () => {
     token.value = ''
     loggedIn.value = false
   }
+
+  const updateUser = () => {
+    if (token.value.length > 0) {
+      loggedIn.value = true
+      fetchUser(token.value).then((fetchedUser: User) => {
+        console.log(fetchedUser)
+        Object.assign(user, fetchedUser)
+      })
+    }
+  }
   
   watch(token, (token: string) => {
     localStorage.setItem('token', token)
+    updateUser()
   })
   
-  if (token.value.length > 0) {
-    loggedIn.value = true
-    fetchUser(token.value).then((fetchedUser: User) => {
-      console.log(fetchedUser)
-      Object.assign(user, fetchedUser)
-    })
-  }
+  updateUser()
   
   return { token, user, loggedIn, age, $reset }
 })

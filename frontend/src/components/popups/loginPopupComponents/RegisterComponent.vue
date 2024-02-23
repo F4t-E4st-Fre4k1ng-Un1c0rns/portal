@@ -19,6 +19,8 @@
   const dateOfBirthMonth = ref<number>()
   const dateOfBirthYear = ref<number>()
 
+  let error = ref(false)
+
   watchEffect(() => {
     schema.username = email.value
     schema.email = email.value
@@ -34,13 +36,21 @@
 
   const submitForm = () => {
     if (form.value?.reportValidity()) {
-      register(schema).then(() => { /*document.location.reload()*/ })
-        .catch((e) => { console.error(e) })
+      register(schema).then(() => { props.closeDialog() })
+        .catch((e) => { 
+        error.value = true
+        console.error(e)
+      })
     }
   }
+
+  const props = defineProps<{
+    closeDialog: Function
+  }>()
 </script>
 <template>
   <form class="shadow" ref="form">
+    <p v-if="error">Что-то не так...</p>
     <input placeholder="Имя" v-model="schema.name"
       autocomplete="given-name" required />
     <input type="email" placeholder="Электронная почта" v-model="email"

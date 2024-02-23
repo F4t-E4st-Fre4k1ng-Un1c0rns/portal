@@ -13,13 +13,17 @@
   
   const submitForm = () => {
     if (form.value?.reportValidity()) {
-      login(schema).then((a) => { console.log(a) })
+      login(schema).then((a) => { props.closeDialog() })
         .catch((e) => {
           error.value = true;
           console.error(e) 
         })
     }
   }
+
+  const props = defineProps<{
+    closeDialog: Function
+  }>()
 </script>
 <template>
   <form class="shadow" ref="form">

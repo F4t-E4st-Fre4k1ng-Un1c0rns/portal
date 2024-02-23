@@ -41,8 +41,8 @@ defineExpose({
         </button>
       </nav>
 
-      <LoginComponent v-if="tab == Tab.Login" />
-      <RegisterComponent v-if="tab == Tab.Register" />
+      <LoginComponent v-if="tab == Tab.Login" :closeDialog="closeDialog" />
+      <RegisterComponent v-if="tab == Tab.Register" :closeDialog="closeDialog" />
     </main>
   </dialog>
 </template>

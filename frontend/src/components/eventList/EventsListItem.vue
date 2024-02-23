@@ -3,16 +3,21 @@ import { ref } from 'vue'
 
 import { type EventBasic } from '@/types/event'
 import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
-import EventRegistrationPopup from '@/components/popups/EventRegistrationPopup.vue';
+import { usePopupsStore } from '@/stores/popups'
 
+const popupsStore = usePopupsStore()
 let props = defineProps<{
   event: EventBasic
 }>()
 
-let registrationPopup = ref<typeof EventRegistrationPopup | undefined>()
-
 let selectedTicket = ref<number>(0)
-console.log(props.event.tickets, selectedTicket.value)
+
+const openRegistrationPopup = () => {
+  popupsStore.event = props.event
+  Object.assign(popupsStore.ticket, props.event.tickets[selectedTicket.value])
+  Object.assign(popupsStore.event, props.event)
+  popupsStore.eventRegisterPopupOpened = true
+}
 </script>
 
 <template>
@@ -39,12 +44,9 @@ console.log(props.event.tickets, selectedTicket.value)
         <p class="icon location">{{ event.place.address }}</p>
       </div>
       <button class="button"
-        @click="() => { registrationPopup?.openDialog() }">
+        @click="() => { openRegistrationPopup() }">
         Регистрация
       </button>
-      <EventRegistrationPopup
-        :event="event" :ticket="event.tickets[selectedTicket]"
-        ref="registrationPopup" v-if="event.tickets[selectedTicket]" />
     </div>
   </div>
 </template>

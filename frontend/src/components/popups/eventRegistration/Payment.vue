@@ -8,7 +8,7 @@
   <h1>Вы оплачиваете участие своей душой.</h1>
   <p>Другой возможности не предусмотренно.</p>
   <button class="auth-button" type="button"
-    @click="() => { goNext() }" :disabled="form?.checkValidity()">
+    @click="() => { goNext() }">
     Продолжить
   </button>
   </form>

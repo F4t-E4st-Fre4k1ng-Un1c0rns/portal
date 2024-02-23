@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 import { type EventBasic } from '@/types/event'
 import type Ticket from '@/types/ticket'
@@ -8,6 +8,16 @@ import PopupHeader from '@/components/popups/PopupHeader.vue'
 import Form from '@/components/popups/eventRegistration/Form.vue'
 import Payment from '@/components/popups/eventRegistration/Payment.vue'
 
+import { usePopupsStore } from '@/stores/popups'
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
+const popupsStore = usePopupsStore()
+
+if (!authStore.loggedIn) {
+    popupsStore.loginPopupOpened = true
+}
+
 enum Tab {
   Form = 1,
   Payment = 2
@@ -15,11 +25,6 @@ enum Tab {
 
 const dialog = ref<HTMLDialogElement | null>(null)
 const tab = ref(Tab.Form)
-
-defineProps<{
-  event: EventBasic,
-  ticket: Ticket
-}>()
 
 const nextTab = () => {
 console.log(tab.value)
@@ -35,28 +40,27 @@ console.log(tab.value)
   }
 }
 
-const openDialog = () => {
+onMounted(() => {
   dialog.value?.showModal()
-}
+  tab.value = Tab.Form
+})
 
 const closeDialog = () => {
-  dialog.value?.close()
+  popupsStore.eventRegisterPopupOpened = false
 }
-
-defineExpose({
-  openDialog
-})
 </script>
 
 <template>
   <dialog ref="dialog" class="login-register-dialog event-registration-dialog">
     <PopupHeader :closeDialog="closeDialog" />
     <main>
-      <h1>Регистрация на «{{ event.title }}»</h1>
+      <h1>Регистрация на «{{ popupsStore.event.title }}»</h1>
       <div class="tags">
-        <p>{{ event.sport_type.name }}</p>
-        <p>{{ ticket.title }}</p>
-        <p>{{ dateStartAndEndToHumanReadableConverter(event.participation_start, event.participation_end) }}</p>
+        <p>{{ popupsStore.event.sport_type.name }}</p>
+        <p>{{ popupsStore.ticket.title }}</p>
+        <p>{{ dateStartAndEndToHumanReadableConverter(
+                popupsStore.event.participation_start, 
+                popupsStore.event.participation_end) }}</p>
       </div>
 
       <nav class="shadow">

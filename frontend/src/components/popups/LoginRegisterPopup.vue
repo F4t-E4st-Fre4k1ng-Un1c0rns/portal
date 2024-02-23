@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 import LoginComponent from '@/components/popups/loginPopupComponents/LoginComponent.vue'
 import RegisterComponent from '@/components/popups/loginPopupComponents/RegisterComponent.vue'
 import PopupHeader from '@/components/popups/PopupHeader.vue'
+
+import { usePopupsStore } from '@/stores/popups'
+const popupsStore = usePopupsStore()
 
 enum Tab {
   Login,
@@ -13,17 +16,13 @@ enum Tab {
 const dialog = ref<HTMLDialogElement | null>(null)
 const tab = ref(Tab.Login)
 
-const openDialog = () => {
+onMounted(() => {
   dialog.value?.showModal()
-}
+})
 
 const closeDialog = () => {
-  dialog.value?.close()
+  popupsStore.loginPopupOpened = false
 }
-
-defineExpose({
-  openDialog
-})
 </script>
 
 <template>

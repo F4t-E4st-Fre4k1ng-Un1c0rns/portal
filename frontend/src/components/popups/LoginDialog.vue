@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import LoginRegisterPopup from './LoginRegisterPopup.vue'
 import { useAuthStore } from '@/stores/auth'
+import { usePopupsStore } from '@/stores/popups'
 
 const dialog = ref<HTMLDialogElement | null>(null)
-const loginPopup = ref<typeof LoginRegisterPopup | null>(null)
 
 const authStore = useAuthStore()
-console.log(authStore.user, authStore.user.name), 4
+const popupsStore = usePopupsStore()
 
 const openDialog = () => {
   dialog.value?.showModal()
@@ -19,8 +18,8 @@ const closeDialog = () => {
 }
 
 const openLoginPage = () => {
+  popupsStore.loginPopupOpened = true
   dialog.value?.close()
-  loginPopup.value?.openDialog()
 }
 </script>
 
@@ -41,8 +40,6 @@ const openLoginPage = () => {
       </button>
     </div>
   </dialog>
-
-  <LoginRegisterPopup ref="loginPopup" />
 </template>
 
 <style scoped>

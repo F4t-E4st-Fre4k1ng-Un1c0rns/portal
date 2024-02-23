@@ -6,6 +6,7 @@ import type Ticket from '@/types/ticket'
 import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
 import PopupHeader from '@/components/popups/PopupHeader.vue'
 import Form from '@/components/popups/eventRegistration/Form.vue'
+import Payment from '@/components/popups/eventRegistration/Payment.vue'
 
 enum Tab {
   Form = 1,
@@ -21,7 +22,17 @@ defineProps<{
 }>()
 
 const nextTab = () => {
-  tab.value += 1
+console.log(tab.value)
+  switch (tab.value) {
+    case Tab.Form: {
+      tab.value = Tab.Payment
+      break
+    }
+    case Tab.Payment: {
+      closeDialog()
+      break
+    }
+  }
 }
 
 const openDialog = () => {
@@ -56,7 +67,8 @@ defineExpose({
           Оплата
         </button>
       </nav>
-      <Form v-if="tab == Tab.Form" :goNext="nextTab" />
+      <Form v-if="tab == Tab.Form" :goNext="() => { nextTab() }" />
+      <Payment v-if="tab == Tab.Payment" :goNext="nextTab" />
     </main>
   </dialog>
 </template>

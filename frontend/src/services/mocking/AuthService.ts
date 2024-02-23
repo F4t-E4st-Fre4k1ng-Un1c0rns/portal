@@ -6,4 +6,4 @@ function login(schema: LoginSchema) {}
 function getUser(token: string) {}
 function registerOnEvent(id: string, token: string) {}
 
-export { register, login, getUser }
+export { register, login, getUser, registerOnEvent }

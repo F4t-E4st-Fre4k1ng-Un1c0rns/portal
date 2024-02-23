@@ -30,9 +30,12 @@ async function fetchUser(token: string) {
 
 async function saveUser(token: string) {
   const authStore = useAuthStore()
-  const user = await fetchUser(token)
   authStore.token = token
-  Object.assign(user, authStore.user)
 }
 
-export { register, login, fetchUser }
+async function registerOnEvent(ticket_id: string) {
+  const authStore = useAuthStore()
+  return await fetchingModule?.registerOnEvent(ticket_id, authStore.token)
+}
+
+export { register, login, fetchUser, registerOnEvent }

@@ -7,6 +7,7 @@ import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
 import PopupHeader from '@/components/popups/PopupHeader.vue'
 import Form from '@/components/popups/eventRegistration/Form.vue'
 import Payment from '@/components/popups/eventRegistration/Payment.vue'
+import { registerOnEvent } from '@/services/AuthService'
 
 import { usePopupsStore } from '@/stores/popups'
 import { useAuthStore } from '@/stores/auth'
@@ -34,6 +35,7 @@ console.log(tab.value)
       break
     }
     case Tab.Payment: {
+      registerOnEvent(popupsStore.ticket.id)
       closeDialog()
       break
     }

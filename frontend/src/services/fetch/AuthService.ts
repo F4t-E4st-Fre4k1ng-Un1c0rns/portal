@@ -53,5 +53,21 @@ async function getUser(token: string): Promise<User> {
   return await json
 }
 
-export { register, login, getUser }
+async function registerOnEvent(ticket_id: string, token: string) {
+  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/events/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token
+    },
+    body: JSON.stringify({
+      ticket_id
+    }), 
+  })
+  if (!request.ok) {
+    throw Error
+  }
+}
+
+export { register, login, getUser, registerOnEvent }
 

@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: import('@/views/HomeView.vue')
+      component: () => import('@/views/HomeView.vue')
     },
     {
       path: '/event/',
@@ -17,11 +17,15 @@ const router = createRouter({
       path: '/event/:id',
       name: 'event',
       children: [
-        { path: '', name: 'event-overview', component: import('@/views/EventOverviewView.vue') },
+        {
+            path: '', 
+            name: 'event-overview',
+            component: () => import('@/views/EventOverviewView.vue')
+        },
         {
           path: 'participants',
           name: 'event-participants',
-          component: import('@/views/EventParticipantsView.vue')
+          component: () => import('@/views/EventParticipantsView.vue')
         }
       ],
       component: () => import('@/views/EventView.vue')

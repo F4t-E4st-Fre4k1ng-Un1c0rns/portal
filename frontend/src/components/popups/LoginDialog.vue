@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import LoginRegisterPopup from './LoginRegisterPopup.vue';
+import LoginRegisterPopup from './LoginRegisterPopup.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const dialog = ref<HTMLDialogElement | null>(null)
 const loginPopup = ref<typeof LoginRegisterPopup | null>(null)
+
+const authStore = useAuthStore()
+console.log(authStore.user, authStore.user.name), 4
 
 const openDialog = () => {
   dialog.value?.showModal()
@@ -28,7 +32,9 @@ const openLoginPage = () => {
     <button class="close" @click="closeDialog()">
       <img src="@/assets/images/icons/close.svg" alt="Закрыть" />
     </button>
-    <button @click="openLoginPage()" class="auth-button">Авторизация</button>
+    <button v-if="!authStore.loggedIn" @click="openLoginPage()" class="auth-button">Авторизация</button>
+    <p v-else>{{ authStore.user.name }} {{ authStore.user.secondName }}</p>
+    <!-- TODO: fix design for logged in users -->
   </dialog>
 
   <LoginRegisterPopup ref="loginPopup" />

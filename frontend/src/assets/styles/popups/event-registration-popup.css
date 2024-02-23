@@ -3,6 +3,9 @@ dialog.event-registration-dialog {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
+    margin-bottom: 52px;
+
     &>* {
       padding: 10px;
       margin: 0;

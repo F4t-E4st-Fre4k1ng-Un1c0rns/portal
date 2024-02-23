@@ -1,4 +1,5 @@
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive,
+  computed, watch } from 'vue'
 import { defineStore } from 'pinia'
 
 import { type User } from '@/types/user'
@@ -16,6 +17,11 @@ export const useAuthStore = defineStore('auth', () => {
     city: '',
     dateOfBirth: new Date()
   })
+  const age = computed(() => {
+    console.log(user.dateOfBirth)
+    return new Date().getFullYear() 
+        - user.dateOfBirth?.getFullYear()
+  })
   const loggedIn = ref(false)
   
   watch(token, (token: string) => {
@@ -30,5 +36,5 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
   
-  return { token, user, loggedIn }
+  return { token, user, loggedIn, age }
 })

@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: calc(449px - 33px * 2);
+  height: calc(599px - 31px * 2);
+
+  margin: auto;
+
+  border-radius: var(--border-radius);
+
+  & .banner {
+    height: 220px;
+    background-size: cover;
+
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+    & .sport-name {
+      font-size: 17px;
+      width: fit-content;
+
+      background-color: var(--light);
+      color: var(--dark);
+
+      margin: 17px 33px;
+      padding: 3px 10px;
+      border-radius: var(--small-radius);
+    }
+  }
+
+  & .price {
+    margin: auto 5px;
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin: 31px 33px;
+
+    & .ticket-select {
+      border: solid 1px var(--dark);
+    }
+
+    & * {
+      margin: 0;
+    }
+
+    & .name {
+      height: 100%;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .date-and-time {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .icon::before {
+      background-color: var(--dark);
+    }
+
+    & button {
+      padding: 8px;
+      text-align: center;
+
+      background-color: var(--accent);
+      color: var(--light);
+      border-radius: var(--small-radius);
+      border: none;
+
+      margin-top: 10px;
+
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25px;
+    }
+  }
+}

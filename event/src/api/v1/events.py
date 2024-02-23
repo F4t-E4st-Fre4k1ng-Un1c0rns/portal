@@ -1,8 +1,7 @@
 from typing import Annotated
 from uuid import UUID
 
-from typing import Annotated, Optional
-from fastapi import APIRouter, Depends, Header, HTTPException, Body
+from fastapi import APIRouter, Depends, Header
 from src.schemas.auth import UserProfileSchema
 
 from src.schemas.event import (
@@ -12,11 +11,9 @@ from src.schemas.event import (
     SportTypeSchema,
 )
 from src.schemas.registration import (
-    GetEventParticipants,
     PostRegister,
     RegistrationSchema,
 )
-from src.service.auth import get_auth_service
 from src.service.event import get_event_service
 from src.service.registration import get_registraton_service
 from src.service.sport_type import get_sport_type_service

@@ -1,12 +1,12 @@
 dialog.login-register-dialog {
   background-color: var(--light);
   color: var(--dark);
-  width: calc(100% - 130px * 2);
+  width: calc(100vw - var(--content-padding) * 2);
   height: calc(100% - 22px * 2);
   border: none;
   margin: 0;
 
-  padding: 22px 130px;
+  padding: 22px var(--content-padding);
 
   & main {
     max-width: 843px;
@@ -50,6 +50,11 @@ dialog.login-register-dialog {
 
     & form {
       padding: 52px 39px;
+      @media (width < 600px) {
+        & {
+          padding: 52px 0;
+        }
+      }
 
       border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
     }

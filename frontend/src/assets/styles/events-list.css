@@ -4,6 +4,16 @@
   align-items: center;
   justify-content: space-between;
 
+  @media (width < 600px) {
+    & {
+      flex-direction: column;
+
+      & .filters {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
   & h1 {
     font-size: 37px;
     font-weight: 600;
@@ -13,6 +23,7 @@
     display: flex;
     gap: 22px;
     flex-direction: row;
+
     & input {
       width: 300px;
       font-size: 20px;

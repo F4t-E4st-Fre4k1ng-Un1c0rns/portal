@@ -72,10 +72,14 @@
     </label>
     <fieldset class="radio">
       <legend>Пол</legend>
-      <input type="radio" id="female" name="floor" />
-      <label for="female">Женский</label>
-      <input type="radio" id="male" name="floor" />
-      <label for="male">Мужской</label>
+      <label for="female">
+        <input type="radio" id="female" name="floor" />
+        Женский
+      </label>
+      <label for="male">
+        <input type="radio" id="male" name="floor" />
+        Мужской
+      </label>
     </fieldset>
     <input placeholder="Страна" autocomplete="country-name" />
     <input placeholder="Город" v-model="schema.city" required />

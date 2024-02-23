@@ -166,6 +166,15 @@ header {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-items: center;
   gap: 86px;
+  @media (width < 1300px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      & * {
+        margin: auto;
+      }
+    }
+  }
 
   & .creators-title {
     grid-column: 1 / 3;

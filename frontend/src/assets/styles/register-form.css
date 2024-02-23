@@ -5,4 +5,13 @@ form {
   & .auth-button {
     grid-column: 1 / 3;
   }
+
+  @media (width < 600px) {
+    & {
+      grid-template-columns: auto;
+      & .auth-button {
+        grid-column: 1;
+      }
+    }
+  }
 }

@@ -8,11 +8,11 @@
 
       <div class="group">
         <router-link :to="{ name: 'events-list' }">События</router-link>
-        <a href="#">Результаты</a>
-        <a href="#">Клубы</a>
-        <a href="#">Блог</a>
-        <a href="#">Организаторам</a>
-        <a href="#">Контакты</a>
+        <a href="#" class="unpleasant">Результаты</a>
+        <a href="#" class="unpleasant">Клубы</a>
+        <a href="#" class="unpleasant">Блог</a>
+        <a href="#" class="unpleasant">Организаторам</a>
+        <a href="#" class="unpleasant">Контакты</a>
       </div>
 
       <div class="group">

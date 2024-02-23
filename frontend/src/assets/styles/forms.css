@@ -4,12 +4,17 @@ form {
 
   & input {
     padding: 13px 20px;
+    width: calc(100% - 20px * 2);
     border-radius: var(--small-radius);
     border: 1px solid var(--accent);
 
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 23px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+
+    &[type=checkbox], &[type=radio] {
+      width: fit-content;
+    }
 
     &::placeholder {
       color: var(--accent);
@@ -18,7 +23,7 @@ form {
 
   & .date-input {
     display: flex;
-    gap: 13px;
+    gap: 13px ;
 
     margin-top: 13px;
 

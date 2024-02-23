@@ -2,10 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
 
-  padding-top: 22px;
-  padding-bottom: 22px;
-  padding-left: 130px;
-  padding-right: 130px;
+  padding: 22px var(--content-padding);
 
   font-size: 20px;
   font-weight: 400;
@@ -17,5 +14,11 @@ nav {
   & .group {
     display: flex;
     gap: 42px;
+  }
+
+  @media (width < 980px) {
+    & .unpleasant {
+      display: none;
+    }
   }
 }

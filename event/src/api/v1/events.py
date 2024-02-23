@@ -1,8 +1,10 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header
-from src.schemas.auth import UserProfileSchemaId
+from typing import Annotated, Optional
+from fastapi import APIRouter, Depends, Header, HTTPException, Body
+from src.schemas.auth import UserProfileSchema
+
 from src.schemas.event import (
     EventListFilterSchema,
     GetEvent,
@@ -50,6 +52,6 @@ async def register_on_event(
 
 @events_router.get(
     "/registrations/{ticket_id}", response_model=list[GetEventParticipants]
-)
+):
 async def get_registered_esurs(ticket_id: UUID):
     return await get_registraton_service().get_registered_users(ticket_id)

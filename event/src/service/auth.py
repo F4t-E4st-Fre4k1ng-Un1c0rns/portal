@@ -1,8 +1,9 @@
-import uuid
 from functools import lru_cache
+import uuid
 
+from fastapi import HTTPException, Header
+from pydantic import TypeAdapter
 import httpx
-from fastapi import Header, HTTPException
 from src.schemas.auth import UserProfileSchema, UserProfileSchemaId, UserSchema
 from src.settings import get_settings
 
@@ -22,6 +23,18 @@ class AuthService:
             raise HTTPException(status_code=500, detail="Auth serivce error")
 
         return UserProfileSchema.parse_raw(response.text)
+    
+    async def get_users_list(self, ids: list[uuid.UUID]) -> list[UserProfileSchema]:
+        users = [{"id": str(id)} for id in ids]
+        response = httpx.post(
+            self.scheme_url + "/api/v1/auth/userList",
+            headers=self.headers,
+            json={"users": users,}
+        )
+        if not response.is_success:
+            raise HTTPException(status_code=500, detail="Auth serivce error")
+        print(response.text)
+        return TypeAdapter(list[UserProfileSchema]).validate_json(response.text)
 
     async def authenticate(self, token: str) -> UserSchema:
         response = httpx.post(

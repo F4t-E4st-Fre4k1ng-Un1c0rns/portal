@@ -8,16 +8,16 @@ class UserProfileSchema(BaseModel):
     username: str
     email: str
     role: str
-    isSponsor: str | None
-    inn: str | None
-    ogrn: str | None
-    sponsorAdress: str | None
-    name: str | None
-    secondName: str | None
-    fatherName: str | None
-    city: str | None
-    dateOfBirth: datetime | None
-    club: str | None
+    isSponsor: bool | None = None 
+    inn: str | None = None
+    ogrn: str | None = None
+    sponsorAdress: str | None = None
+    name: str | None = None
+    secondName: str | None = None
+    fatherName: str | None = None
+    city: str | None = None
+    dateOfBirth: datetime | None = None
+    club: str | None = None
 
 
 class UserProfileSchemaId(UserProfileSchema):

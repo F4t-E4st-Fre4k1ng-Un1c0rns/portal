@@ -15,8 +15,7 @@ class RegistrationService:
         )
         async with async_session_maker() as session:
             result = await session.execute(request)
-        service = get_auth_service()
-        raise NotImplementedError()
+        return await get_auth_service().get_users_list(result.scalars().all())
 
     async def count_registered_users(self, ticket_id):
         request = select(func.count(TicketRegistration.id)).filter(

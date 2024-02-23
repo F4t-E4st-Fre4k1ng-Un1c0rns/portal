@@ -1,5 +1,6 @@
 start:
 	docker compose up --build -d
+	docker compose rm -f
 
 update-api:
 	docker compose cp ./event/ event-service:.

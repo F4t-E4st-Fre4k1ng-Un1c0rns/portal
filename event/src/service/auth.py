@@ -1,10 +1,9 @@
-from functools import lru_cache
 import uuid
-from fastapi import HTTPException
+from functools import lru_cache
 
 import httpx
-
-from src.schemas.auth import UserSchema, UserProfileSchema
+from fastapi import Header, HTTPException
+from src.schemas.auth import UserProfileSchema, UserProfileSchemaId, UserSchema
 from src.settings import get_settings
 
 
@@ -35,6 +34,13 @@ class AuthService:
             raise HTTPException(status_code=500, detail="Auth serivce error")
 
         return UserSchema.parse_raw(response.text)
+
+    async def check_token(self, token: str = Header("")) -> UserProfileSchemaId:
+        user_id = (await self.authenticate(token)).id
+
+        return UserProfileSchemaId.parse_obj(
+            (await self.get_user(user_id)).dict() | {"id": user_id}
+        )
 
 
 @lru_cache

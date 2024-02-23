@@ -1,23 +1,23 @@
+from typing import Annotated
 from uuid import UUID
 
-from typing import Annotated
 from fastapi import APIRouter, Depends, Header
-
+from src.schemas.auth import UserProfileSchemaId
 from src.schemas.event import (
-    GetEventList,
     EventListFilterSchema,
     GetEvent,
+    GetEventList,
     SportTypeSchema,
 )
 from src.schemas.registration import (
-    RegistrationSchema,
     GetEventParticipants,
     PostRegister,
+    RegistrationSchema,
 )
+from src.service.auth import get_auth_service
 from src.service.event import get_event_service
 from src.service.registration import get_registraton_service
 from src.service.sport_type import get_sport_type_service
-
 
 events_router = APIRouter(
     prefix="/events",
@@ -26,7 +26,7 @@ events_router = APIRouter(
 
 @events_router.get("/", response_model=list[GetEventList])
 async def listevents(
-    filter: Annotated[EventListFilterSchema, Depends(EventListFilterSchema)]
+    filter: Annotated[EventListFilterSchema, Depends(EventListFilterSchema)],
 ):
     return await get_event_service().get_event_list(filter)
 

@@ -20,7 +20,7 @@ class UserProfileSchema(BaseModel):
     club: str | None
 
 
-class UserProfileSchema2(UserProfileSchema):
+class UserProfileSchemaId(UserProfileSchema):
     id: uuid.UUID
 
 

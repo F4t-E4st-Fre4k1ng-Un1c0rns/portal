@@ -1,7 +1,7 @@
 from uuid import UUID
-from fastapi import APIRouter
-from src.service.auth import get_auth_service
 
+from fastapi import APIRouter, Header
+from src.service.auth import get_auth_service
 
 auth_router = APIRouter(
     prefix="/auth",
@@ -14,5 +14,5 @@ async def listevents(user_id: UUID):
 
 
 @auth_router.get("/verify")
-async def get_event(token: str):
-    return await get_auth_service().authenticate(token)
+async def get_event(token: str = Header("")):
+    return await get_auth_service().check_token(token)

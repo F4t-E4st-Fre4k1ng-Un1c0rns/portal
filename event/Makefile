@@ -1,4 +1,5 @@
 deps:
+	pip install black
 	python -m pip install poetry
 	poetry install
 

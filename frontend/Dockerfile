@@ -5,6 +5,3 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM caddy
-COPY --from=build /app/dist /usr/share/caddy
-

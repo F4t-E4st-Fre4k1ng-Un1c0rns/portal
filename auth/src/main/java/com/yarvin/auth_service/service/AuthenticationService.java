@@ -31,6 +31,16 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(role)
+                .ogrn(request.getOgrn())
+                .city(request.getCity())
+                .club(request.getClub())
+                .inn(request.getInn())
+                .name(request.getName())
+                .secondName(request.getSecondName())
+                .fatherName(request.getFatherName())
+                .dateOfBirth(request.getDateOfBirth())
+                .isSponsor(request.getIsSponsor())
+                .sponsorAdress(request.getSponsorAdress())
                 .build();
 
         userService.create(user);

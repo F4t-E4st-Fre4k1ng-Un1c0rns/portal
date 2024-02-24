@@ -28,7 +28,7 @@ async function fetchData(id: string): Promise<DatabaseEvent> {
       { title: 'Как ржатб с мемов про котов', text: 'смешно' },
       { title: 'Как не ржатб с мемов про котов', text: 'не смешно' },
     ],
-    documents: [{ file: 'https://vk.com/memy_pro_kotow' }],
+    documents: [{ file: 'https://vk.com/memy_pro_kotow', name: 'Очень важный файл' }],
     registration_start: new Date(2020, 1, 2),
     regestration_end: new Date(2020, 1, 2),
     participation_start: new Date(2020, 1, 2),

@@ -66,7 +66,7 @@ if (typeof attrs.event === "object" && attrs.event !== null && "tickets" in attr
     <section class="documents">
       <h2>Документы</h2>
       <ul>
-        <li v-for="document in event.documents"><a :href="document.file">{{ document.file }}</a></li>
+        <li v-for="document in event.documents"><a :href="document.file">{{ document.name }}</a></li>
       </ul>
     </section>
   </div>

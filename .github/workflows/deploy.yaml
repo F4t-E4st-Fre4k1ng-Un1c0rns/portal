@@ -25,4 +25,4 @@ jobs:
           script: |
             cd /home/poslam/portal
             git pull
-            make upate
+            make update

@@ -51,6 +51,7 @@ class SportTypeNameSchema(BaseModel):
 
 class DocumentSchema(BaseModel):
     file: str
+    name: str
 
 
 class PlaceSchema(BaseModel):

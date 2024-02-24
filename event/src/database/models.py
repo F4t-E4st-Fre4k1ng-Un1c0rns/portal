@@ -44,6 +44,7 @@ class Document(Base):
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     event_id: Mapped[uuid.UUID] = mapped_column(ForeignKey(Event.id))
     file = Column(FileType())
+    name: Mapped[str] = mapped_column()
 
 
 class Place(Base):

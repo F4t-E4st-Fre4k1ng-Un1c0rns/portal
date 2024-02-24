@@ -1,9 +1,10 @@
-from functools import lru_cache
 import uuid
+from functools import lru_cache
 
-from fastapi import HTTPException, Header
-from pydantic import TypeAdapter
 import httpx
+from fastapi import Header, HTTPException
+from pydantic import TypeAdapter
+
 from src.schemas.auth import UserProfileSchema, UserProfileSchemaId, UserSchema
 from src.settings import get_settings
 
@@ -35,7 +36,7 @@ class AuthService:
         )
         if not response.is_success:
             raise HTTPException(status_code=500, detail="Auth serivce error")
-        print(response.text)
+
         return TypeAdapter(list[UserProfileSchema]).validate_json(response.text)
 
     async def authenticate(self, token: str) -> UserSchema:

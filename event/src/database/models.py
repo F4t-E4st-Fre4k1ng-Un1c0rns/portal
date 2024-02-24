@@ -43,7 +43,7 @@ class Document(Base):
     __tablename__ = "document"
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
     event_id: Mapped[uuid.UUID] = mapped_column(ForeignKey(Event.id))
-    file = Column(FileType())
+    file: Mapped[str] = mapped_column()
     name: Mapped[str] = mapped_column()
 
 

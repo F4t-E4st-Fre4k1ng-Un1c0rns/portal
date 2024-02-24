@@ -66,7 +66,9 @@ const closeDialog = () => {
       </div>
 
       <nav class="shadow">
-        <button class="tab" :class="{ active: tab == Tab.Form }">
+        <button class="tab" 
+            :class="{ active: tab == Tab.Form }"
+            @click="() => { tab = Tab.Form }">
           Анкета участника
         </button>
         <button class="tab" :class="{ active: tab == Tab.Payment }">

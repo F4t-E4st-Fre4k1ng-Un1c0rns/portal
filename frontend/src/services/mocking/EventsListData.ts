@@ -6,7 +6,7 @@ async function fetchData(): Promise<EventBasic[]> {
   out.push({
     id: '123',
     title: 'Самарский полумарафон «В беге мы едины»',
-    banner: (await import('@/assets/images/tempory-assets/cyclist.jpg')).default,
+    banner: (await import('@/assets/images/tempory-assets/velik.jpg')).default,
     place: { country: { name: '' }, address: 'г. Самара' },
     sport_type: { id: '', name: 'бег' },
     participation_start: new Date(1, 2, 3),

@@ -25,7 +25,14 @@ const router = createRouter({
         {
           path: 'participants',
           name: 'event-participants',
-          component: () => import('@/views/EventParticipantsView.vue')
+          component: () => import('@/views/EventParticipantsView.vue'),
+          children: [
+            {
+              path: ':id',
+              name: 'event-participants-list',
+              component: () => import('@/views/EventParticipantsView.vue')
+            }
+          ]
         }
       ],
       component: () => import('@/views/EventView.vue')

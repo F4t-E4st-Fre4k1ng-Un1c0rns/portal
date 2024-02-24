@@ -6,7 +6,7 @@ import { getData } from '@/services/HomeData'
 // Champions data mocking
 const events: EventBasic[] = getData()
 
-import honorIceRun from '@/assets/images/tempory-assets/honor-ice-run.png'
+import honorIceRun from '@/assets/images/tempory-assets/honor-ice-run.jpg'
 import hockey from '@/assets/images/tempory-assets/hockey.jpg'
 
 const sliderImages = [
@@ -62,17 +62,17 @@ function changeSlider(delta: number) {
       </div>
     </section>
 
-    <section>
+    <section aria-hidden="true">
       <h2>С места события</h2>
       <div class="photos-grid shadow">
-        <img src="@/assets/images/home-grid/1-1.jpg" />
-        <img src="@/assets/images/home-grid/1-2.jpg" />
-        <img src="@/assets/images/home-grid/2-1.jpg" />
-        <img src="@/assets/images/home-grid/2-2.jpg" />
-        <img src="@/assets/images/home-grid/3-1.jpg" />
-        <img src="@/assets/images/home-grid/3-2.jpg" />
-        <img src="@/assets/images/home-grid/4-1.jpg" />
-        <img src="@/assets/images/home-grid/4-2.jpg" />
+        <img src="@/assets/images/home-grid/1-1.jpg" srcset="@/assets/images/home-grid/2x1-1.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/1-2.jpg" srcset="@/assets/images/home-grid/2x1-2.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/2-1.jpg" srcset="@/assets/images/home-grid/2x2-1.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/2-2.jpg" srcset="@/assets/images/home-grid/2x2-2.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/3-1.jpg" srcset="@/assets/images/home-grid/2x3-1.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/3-2.jpg" srcset="@/assets/images/home-grid/2x3-2.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/4-1.jpg" srcset="@/assets/images/home-grid/2x4-1.jpg 2x" loading="lazy" />
+        <img src="@/assets/images/home-grid/4-2.jpg" srcset="@/assets/images/home-grid/2x4-2.jpg 2x" loading="lazy" />
       </div>
     </section>
 

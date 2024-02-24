@@ -1,7 +1,7 @@
 import { type DatabaseEvent } from '@/types/event'
 
 async function fetchData(id: string): Promise<DatabaseEvent> {
-  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/events/${id}`)
+  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/${id}`)
   let response = await request.json()
   response.participation_start = new Date(response.participation_start)
   response.participation_end = new Date(response.participation_end)

@@ -56,7 +56,7 @@ services:
     build: 
       context: ./frontend
       args:
-        - VITE_EVENTS_BASE_API=/api/v1
+        - VITE_EVENTS_BASE_API=/api/v1/events
         - VITE_AUTH_BASE_API=/api/v1/auth
     volumes:
       - web:/app/dist

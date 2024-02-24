@@ -1,7 +1,7 @@
 import { type EventBasic } from '@/types/event'
 
 async function fetchData(): Promise<EventBasic[]> {
-  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/events`)
+  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/`)
   let events = await request.json()
 
   events.forEach((e: EventBasic) => {

@@ -3,6 +3,8 @@ dialog.login-register-dialog {
   color: var(--dark);
   width: calc(100vw - var(--content-padding) * 2);
   height: calc(100% - 22px * 2);
+  max-width: 100vw;
+  max-height: 100vh;
   border: none;
   margin: 0;
 

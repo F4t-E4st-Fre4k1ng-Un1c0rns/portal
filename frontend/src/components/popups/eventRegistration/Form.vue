@@ -63,7 +63,7 @@
     </fieldset>
     <div class="child-right">
       <button class="auth-button" type="button"
-        @click="() => { submit() }" :disabled="form?.checkValidity()">
+        @click="() => { submit() }">
         Продолжить
       </button>
     </div>

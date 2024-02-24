@@ -103,7 +103,7 @@ function changeSlider(delta: number) {
         </div>
       </section>
 
-      <a href="" class="button create shadow">Создать мероприятие</a>
+      <button class="button create shadow">Создать мероприятие</button>
     </section>
   </main>
 </template>

@@ -28,7 +28,6 @@ const dialog = ref<HTMLDialogElement | null>(null)
 const tab = ref(Tab.Form)
 
 const nextTab = () => {
-console.log(tab.value)
   switch (tab.value) {
     case Tab.Form: {
       tab.value = Tab.Payment
@@ -66,14 +65,16 @@ const closeDialog = () => {
       </div>
 
       <nav class="shadow">
-        <button class="tab" :class="{ active: tab == Tab.Form }">
+        <button class="tab" 
+            :class="{ active: tab == Tab.Form }"
+            @click="() => { tab = Tab.Form }">
           Анкета участника
         </button>
         <button class="tab" :class="{ active: tab == Tab.Payment }">
           Оплата
         </button>
       </nav>
-      <Form v-if="tab == Tab.Form" :goNext="() => { nextTab() }" />
+      <Form v-if="tab == Tab.Form" :goNext="nextTab" />
       <Payment v-if="tab == Tab.Payment" :goNext="nextTab" />
     </main>
   </dialog>

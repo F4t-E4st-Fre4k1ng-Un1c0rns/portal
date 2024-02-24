@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import { type DatabaseEvent } from '@/types/event'
 import LoadingState from '@/types/loading'
@@ -9,10 +9,13 @@ import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
 import { usePopupsStore } from '@/stores/popups'
 
 const route = useRoute()
+const router = useRouter()
 const popupsStore = usePopupsStore()
 
 let loaded = ref(LoadingState.Loading)
 let event: DatabaseEvent | undefined = undefined
+
+let contentView = ref<any | undefined>()
 
 if (typeof route.params.id === "string") {
   getEventById(route.params.id).then((loadedEvent: DatabaseEvent) => {
@@ -24,8 +27,12 @@ if (typeof route.params.id === "string") {
     loaded.value = LoadingState.Error
   })
 } else {
-  console.error(route.params.id)
   loaded.value = LoadingState.Error
+}
+
+const scrollToRegistration = () => {
+  router.push({ name: 'event-overview' })
+  contentView.value?.$el.scrollIntoView({ behavior: 'smooth' })
 }
 
 onUnmounted(() => {
@@ -43,7 +50,7 @@ onUnmounted(() => {
           </time>
           <span class="location icon">{{ event.place.address }}</span>
         </div>
-        <a href="" class="button">Регистрация</a>
+        <button class="button" @click="scrollToRegistration">Регистрация</button>
       </div>
     </section>
     <section>
@@ -63,7 +70,7 @@ onUnmounted(() => {
         </button>
       </nav>
     </section>
-    <router-view :event="event" />
+    <router-view :event="event" ref="contentView" />
   </div>
 
   <section v-else-if="loaded == LoadingState.Loading">

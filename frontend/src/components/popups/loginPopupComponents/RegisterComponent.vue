@@ -29,7 +29,7 @@
   watchEffect(() => {
     if (dateOfBirthDay.value && dateOfBirthMonth.value && dateOfBirthYear.value) {
       schema.dateOfBirth = new Date(
-        dateOfBirthYear.value, dateOfBirthMonth.value, dateOfBirthMonth.value
+        dateOfBirthYear.value, dateOfBirthMonth.value - 1, dateOfBirthDay.value + 1
       )
     }
   })

@@ -38,6 +38,12 @@
     height: calc(220px - 15px * 2);
     width: calc(410px - 22px * 2);
 
+    @media (width < 500px) {
+      & {
+        width: 100%;
+      }
+    }
+
     background-color: var(--accent);
     color: var(--light);
     border-radius: var(--border-radius) var(--border-radius) 0 0;

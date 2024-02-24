@@ -18,9 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
     dateOfBirth: new Date()
   })
   const age = computed(() => {
-    console.log(user.dateOfBirth)
-    return new Date().getFullYear() 
-        - user.dateOfBirth?.getFullYear()
+    return new Date(new Date().valueOf() - user.dateOfBirth?.valueOf()).getFullYear() - 1970
   })
   const loggedIn = ref(false)
   
@@ -34,7 +32,6 @@ export const useAuthStore = defineStore('auth', () => {
     if (token.value.length > 0) {
       loggedIn.value = true
       fetchUser(token.value).then((fetchedUser: User) => {
-        console.log(fetchedUser)
         Object.assign(user, fetchedUser)
       })
     }

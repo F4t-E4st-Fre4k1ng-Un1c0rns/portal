@@ -13,7 +13,6 @@ let props = defineProps<{
 let selectedTicket = ref<number>(0)
 
 const openRegistrationPopup = () => {
-  popupsStore.event = props.event
   Object.assign(popupsStore.ticket, props.event.tickets[selectedTicket.value])
   Object.assign(popupsStore.event, props.event)
   popupsStore.eventRegisterPopupOpened = true

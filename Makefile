@@ -1,4 +1,8 @@
 start:
+	docker compose up --build -d
+	docker compose rm -f
+
+update:
 	docker stop portal-nginx-1
 	docker rm portal-nginx-1
 	docker volume rm portal_web

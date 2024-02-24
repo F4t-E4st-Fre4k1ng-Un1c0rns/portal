@@ -75,3 +75,10 @@ if (typeof attrs.event === "object" && attrs.event !== null && "tickets" in attr
 <style scoped>
 @import '@/assets/styles/event-overview.css';
 </style>
+
+<style>
+.details-list details * {
+  max-width: 100%;
+}
+</style>
+

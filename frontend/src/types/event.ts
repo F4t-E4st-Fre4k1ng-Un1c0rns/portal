@@ -21,6 +21,7 @@ interface Article {
 
 interface Document {
   file: string
+  name: string
 }
 
 interface SocialLink {

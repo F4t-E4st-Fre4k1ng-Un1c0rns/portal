@@ -13,8 +13,19 @@ const openDialog = () => {
   dialog.value?.showModal()
 }
 
-const closeDialog = () => {
+const closeDialog = (event: any) => {
   dialog.value?.close()
+}
+
+const clickOnBackdrop = (event: any) => {
+  let rect = event.target.getBoundingClientRect();
+  if (rect.left > event.clientX ||
+      rect.right < event.clientX ||
+      rect.top > event.clientY ||
+      rect.bottom < event.clientY
+  ) {
+      dialog.value?.close();
+  }
 }
 
 const openLoginPage = () => {
@@ -27,8 +38,8 @@ const openLoginPage = () => {
   <button class="burger" @click="openDialog()">
     <img src="@/assets/images/icons/burger.svg" alt="О пользователе" />
   </button>
-  <dialog ref="dialog" class="auth-dialog">
-    <button class="close" @click="closeDialog()">
+  <dialog ref="dialog" class="auth-dialog" @click="clickOnBackdrop">
+    <button class="close" @click="closeDialog">
       <img src="@/assets/images/icons/close.svg" alt="Закрыть" />
     </button>
     <button v-if="!authStore.loggedIn" @click="openLoginPage()" class="auth-button">Авторизация</button>

@@ -41,13 +41,7 @@ if (typeof attrs.event === "object" && attrs.event !== null && "tickets" in attr
       <div class="description">
         <article v-html="event.about"></article>
         <div aria-hidden="true" class="slider">
-          <button class="prev image-icon">
-            <img src="@/assets/images/icons/prev.svg" />
-          </button>
-          <img src="@/assets/images/tempory-assets/marathon.jpg" />
-          <button class="next image-icon">
-            <img src="@/assets/images/icons/next.svg" />
-          </button>
+          <img :src="event.banner" />
         </div>
       </div>
       <div class="details-list">

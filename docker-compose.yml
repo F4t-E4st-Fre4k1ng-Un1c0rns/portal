@@ -49,8 +49,6 @@ services:
     image: postgres:16
     expose:
       - 5433
-    ports:
-      - 5433:5433
     volumes:
       - ./auth/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
     environment:

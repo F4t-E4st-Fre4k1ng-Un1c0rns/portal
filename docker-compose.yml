@@ -49,6 +49,8 @@ services:
     image: postgres:16
     expose:
       - 5433
+    ports:
+      - 5433:5433
     volumes:
       - ./auth/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
     environment:
@@ -59,7 +61,11 @@ services:
 
   frontend:
     container_name: frontend
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+        - VITE_EVENTS_BASE_API=/api/v1
+        - VITE_AUTH_BASE_API=/api/v1/auth
     volumes:
       - web:/app/dist
 

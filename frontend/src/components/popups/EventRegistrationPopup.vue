@@ -28,7 +28,6 @@ const dialog = ref<HTMLDialogElement | null>(null)
 const tab = ref(Tab.Form)
 
 const nextTab = () => {
-console.log(tab.value)
   switch (tab.value) {
     case Tab.Form: {
       tab.value = Tab.Payment
@@ -75,7 +74,7 @@ const closeDialog = () => {
           Оплата
         </button>
       </nav>
-      <Form v-if="tab == Tab.Form" :goNext="() => { nextTab() }" />
+      <Form v-if="tab == Tab.Form" :goNext="nextTab" />
       <Payment v-if="tab == Tab.Payment" :goNext="nextTab" />
     </main>
   </dialog>

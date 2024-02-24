@@ -28,9 +28,9 @@ const router = createRouter({
           component: () => import('@/views/EventParticipantsView.vue'),
           children: [
             {
-              path: ':id',
+              path: ':ticket_id',
               name: 'event-participants-list',
-              component: () => import('@/views/EventParticipantsView.vue')
+              component: () => import('@/views/EventParticipantsListView.vue')
             }
           ]
         }

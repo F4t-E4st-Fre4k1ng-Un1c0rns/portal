@@ -114,3 +114,22 @@ section {
   background-repeat: no-repeat;
   background-position: calc(100% - 15px), calc(100% - 15px);
 }
+
+.profile {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 23px;
+  row-gap: 10px;
+  
+  & p {
+    margin: 0;
+  }
+
+  & svg {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    &>circle {
+      fill: var(--accent);
+    }
+  }
+}

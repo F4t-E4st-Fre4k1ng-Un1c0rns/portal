@@ -29,13 +29,13 @@ export const usePopupsStore = defineStore('popups', () => {
   const eventName = ref('')
   const title = computed(() => {
     if (loginPopupOpened.value) {
-      return `Вход в ${import.meta.env.VITE_SITE_TITLE}`
+      return `Вход`
     } else if (eventRegisterPopupOpened.value) {
-      return `Регистрация на ${event.title} - ${import.meta.env.VITE_SITE_TITLE}`
+      return `Регистрация на ${event.title}`
     } else if (eventName.value.length > 0) {
-      return `${eventName.value} - ${import.meta.env.VITE_SITE_TITLE}`
+      return `${eventName.value}`
     } else {
-      return `${viewName.value} - ${import.meta.env.VITE_SITE_TITLE}`
+      return `${viewName.value}`
     }
   })
 

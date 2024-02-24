@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+@SuppressWarnings("deprecation")
 @Service
 public class JwtService {
     @Value("${token.signing.key}")
@@ -39,7 +40,6 @@ public class JwtService {
 
 
     public boolean isTokenValid(String token) {
-        final String userName = extractUserName(token);
         return !isTokenExpired(token);
     }
     public boolean isTokenValid(String token, UserDetails userDetails) {

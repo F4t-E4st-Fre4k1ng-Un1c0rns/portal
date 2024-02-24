@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
   import { useRoute } from 'vue-router';
   import LoadingState from '@/types/loading'
   import { getData } from '@/services/EventParticipantsData'
@@ -9,19 +9,23 @@
   const loadingState = ref(LoadingState.Loading)
   let users: User[] | undefined = undefined
 
-  if (typeof route.params.event_id === "string") {
-    getData(route.params.event_id)
-      .then((loadedUsers) => {
-        users = loadedUsers
-        loadingState.value = LoadingState.Ok
-      })
-      .catch((err) => {
-        console.error(err)
-        loadingState.value = LoadingState.Error
-      })
+  const update = () => {
+    if (typeof route.params.ticket_id === "string") {
+      loadingState.value = LoadingState.Loading
+      getData(route.params.ticket_id)
+        .then((loadedUsers) => {
+          users = loadedUsers
+          loadingState.value = LoadingState.Ok
+        })
+        .catch((err) => {
+          console.error(err)
+          loadingState.value = LoadingState.Error
+        })
+    }
   }
 
-
+  watch(() => route.params.ticket_id, () => { update() })
+  update()
 </script>
 
 <template>

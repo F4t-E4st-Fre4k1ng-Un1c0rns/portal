@@ -1,10 +1,12 @@
 <script setup lang="ts">
   import { useAttrs, ref, watch } from 'vue';
+  import { useRoute } from 'vue-router';
 
   import type Ticket from '@/types/ticket'
   import { type DatabaseEvent } from '@/types/event'
   import router from '@/router';
 
+  const route = useRoute()
   let event: DatabaseEvent | undefined = undefined
   let tickets: Ticket[] | undefined = undefined
   const loaded = ref(false)
@@ -19,7 +21,8 @@
     throw Error
   }
 
-  const selectedTicket = ref('')
+  const selectedTicket = ref(route.params.ticket_id || '')
+
   watch(selectedTicket, () => {
     router.push({ 
       name: 'event-participants-list', 

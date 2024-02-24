@@ -9,15 +9,17 @@
   const loadingState = ref(LoadingState.Loading)
   let users: User[] | undefined = undefined
 
-  getData(route.params.event_id)
-    .then((loadedUsers) => {
-      users = loadedUsers
-      loadingState.value = LoadingState.Ok
-    })
-    .catch((err) => {
-      console.error(err)
-      loadingState.value = LoadingState.Error
-    })
+  if (typeof route.params.event_id === "string") {
+    getData(route.params.event_id)
+      .then((loadedUsers) => {
+        users = loadedUsers
+        loadingState.value = LoadingState.Ok
+      })
+      .catch((err) => {
+        console.error(err)
+        loadingState.value = LoadingState.Error
+      })
+  }
 
 
 </script>

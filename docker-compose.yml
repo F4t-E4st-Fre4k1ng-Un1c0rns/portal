@@ -7,8 +7,6 @@ services:
     container_name: event-service
     restart: always
     build: ./event
-    ports:
-      - 8001:8000
     environment:
       - POSTGRES_HOST=postgres-event-service
       - POSTGRES_DB=event_service
@@ -33,8 +31,6 @@ services:
     container_name: auth-service
     restart: always
     build: ./auth
-    ports:
-      - 8080:8080
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-auth-service:5432/mydatabase
       - SPRING_DATASOURCE_USERNAME=compose-postgres
@@ -47,8 +43,6 @@ services:
   postgres-auth-service:
     container_name: db
     image: postgres:16
-    expose:
-      - 5433
     volumes:
       - ./auth/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
     environment:

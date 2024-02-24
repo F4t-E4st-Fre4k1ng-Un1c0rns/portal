@@ -54,7 +54,7 @@ async function getUser(token: string): Promise<User> {
 }
 
 async function registerOnEvent(ticket_id: string, token: string) {
-  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/events/register`, {
+  let request = await fetch(`${import.meta.env.VITE_EVENTS_BASE_API}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

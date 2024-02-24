@@ -1,7 +1,8 @@
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { type EventBasic } from '@/types/event'
 import type Ticket from '@/types/ticket'
+import { useRouter, type RouteLocationNormalized } from 'vue-router'
 
 export const usePopupsStore = defineStore('popups', () => {
   const loginPopupOpened = ref(false)
@@ -24,6 +25,36 @@ export const usePopupsStore = defineStore('popups', () => {
     max_places: 0
   })
 
+  const viewName = ref('')
+  const eventName = ref('')
+  const title = computed(() => {
+    if (loginPopupOpened.value) {
+      return `Вход в ${import.meta.env.VITE_SITE_TITLE}`
+    } else if (eventRegisterPopupOpened.value) {
+      return `Регистрация на ${event.title} - ${import.meta.env.VITE_SITE_TITLE}`
+    } else if (eventName.value.length > 0) {
+      return `${eventName.value} - ${import.meta.env.VITE_SITE_TITLE}`
+    } else {
+      return `${viewName.value} - ${import.meta.env.VITE_SITE_TITLE}`
+    }
+  })
 
-  return { loginPopupOpened, eventRegisterPopupOpened, event, ticket }
+  const setTitle = () => {
+    document.title = title.value
+  }
+
+  watch(title, () => {
+    setTitle()
+  })
+  setTitle()
+
+  const router = useRouter()
+  router.afterEach((to: RouteLocationNormalized) => {
+    viewName.value = to.meta.title || ""
+  })
+
+
+  return { loginPopupOpened, eventRegisterPopupOpened, event, ticket,
+    viewName, eventName, title  
+  }
 })

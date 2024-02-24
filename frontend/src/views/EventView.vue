@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { type DatabaseEvent } from '@/types/event'
 import LoadingState from '@/types/loading'
 import { getEventById } from '@/services/EventData'
 import { dateStartAndEndToHumanReadableConverter } from '@/services/Date'
+import { usePopupsStore } from '@/stores/popups'
 
 const route = useRoute()
-console.log(route, route.params, route.matched)
+const popupsStore = usePopupsStore()
 
 let loaded = ref(LoadingState.Loading)
 let event: DatabaseEvent | undefined = undefined
 
 if (typeof route.params.id === "string") {
   getEventById(route.params.id).then((loadedEvent: DatabaseEvent) => {
-    console.log(loadedEvent)
+    popupsStore.eventName = loadedEvent.title
     event = loadedEvent
     loaded.value = LoadingState.Ok
   }).catch((error: Error) => {
@@ -26,6 +27,10 @@ if (typeof route.params.id === "string") {
   console.error(route.params.id)
   loaded.value = LoadingState.Error
 }
+
+onUnmounted(() => {
+  popupsStore.eventName = ""
+})
 </script>
 <template>
   <div v-if="loaded == LoadingState.Ok && event !== undefined">

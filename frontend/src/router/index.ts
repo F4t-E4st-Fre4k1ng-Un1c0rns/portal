@@ -1,4 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vue-router'
+import 'vue-router'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    title?: string
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,12 +13,14 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/HomeView.vue')
+      component: () => import('@/views/HomeView.vue'),
+      meta: { title: 'Главная страница' }
     },
     {
       path: '/event/',
       name: 'events-list',
-      component: () => import('@/views/EventsListView.vue')
+      component: () => import('@/views/EventsListView.vue'),
+      meta: { title: 'Список событий' }
     },
     {
       path: '/event/:id',
@@ -30,14 +39,15 @@ const router = createRouter({
             {
               path: ':ticket_id',
               name: 'event-participants-list',
-              component: () => import('@/views/EventParticipantsListView.vue')
+              component: () => import('@/views/EventParticipantsListView.vue'),
+              meta: { title: 'Список участников' }
             }
           ]
         }
       ],
       component: () => import('@/views/EventView.vue')
     }
-  ]
+  ],
 })
 
 export default router

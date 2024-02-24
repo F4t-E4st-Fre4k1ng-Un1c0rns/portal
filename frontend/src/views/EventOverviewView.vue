@@ -5,6 +5,10 @@ import type Ticket from '@/types/ticket'
 import { type DatabaseEvent } from '@/types/event'
 import SocialLink from '@/components/event/SocialLink.vue';
 
+import { usePopupsStore } from '@/stores/popups'
+
+const popupsStore = usePopupsStore()
+
 let event: DatabaseEvent | undefined = undefined
 let tickets: Ticket[] | undefined = undefined
 const loaded = ref(false)
@@ -16,6 +20,12 @@ if (typeof attrs.event === "object" && attrs.event !== null && "tickets" in attr
 } else {
   console.error(attrs)
   throw Error
+}
+
+const registerOnTicket = (ticket: Ticket) => {
+  Object.assign(popupsStore.ticket, ticket)
+  Object.assign(popupsStore.event, event)
+  popupsStore.eventRegisterPopupOpened = true
 }
 </script>
 
@@ -29,7 +39,8 @@ if (typeof attrs.event === "object" && attrs.event !== null && "tickets" in attr
           <p class="name">{{ ticket.title }}</p>
           <p class="distance">{{ ticket.extra_title }}</p>
           <p class="people icon">{{ ticket.max_places }}</p>
-          <a href="" class="button disabled">Результаты</a>
+          <button class="button" 
+            @click="() => { registerOnTicket(ticket) }">Зарегистрироваться</button>
         </div>
       </div>
     </section>

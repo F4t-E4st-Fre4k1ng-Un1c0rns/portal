@@ -310,7 +310,7 @@ COPY public.ticket (id, event_id, title, extra_title, price, max_places, sport_t
 --
 
 COPY public.ticket_registation (id, ticket_id, user_id, serial_number) FROM stdin;
-3e15345d-6c9b-493d-8d39-02232f52161b	84da98e9-1c91-464d-8775-4bb0f9e6dc8b	3fa85f64-5717-4562-b3fc-2c963f66afa6	23
+3e15345d-6c9b-493d-8d39-02232f52161b	84da98e9-1c91-464d-8775-4bb0f9e6dc8b	96e78bbd-1b7c-49d6-80a6-4b307d8b692b	23
 \.
 
 

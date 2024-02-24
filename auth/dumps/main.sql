@@ -124,15 +124,15 @@ COPY public.roles (id, name) FROM stdin;
 --
 
 COPY public.users (id, city, club, date_of_birth, email, father_name, inn, is_sponsor, name, ogrn, password, second_name, sponsor_adress, username, role_id) FROM stdin;
-96e78bbd-1b7c-49d6-80a6-4b307d8b692b	Владивосток	admin_club	1970-01-01 00:00:00	good@gmail.com	Админович	\N	f	Админ	\N	1	Админов	\N	admin	2
-490048ec-8181-4c44-ac2a-e30d03c3c4c3	Уссурийск	man_club	2000-01-01 00:00:00	good@gmail.com	Святославович	4567890	t	Ярополк	345678	1	Рюрикович	g000d_adress	man_1	1
-460f602b-cd8a-419e-9281-7f1d77f92824	Артём	man_club	1999-01-01 00:00:00	good@gmail.com	Олегович	\N	f	Денис	\N	1	Кириенко	\N	man_4	1
-3b7fda1d-5c62-4903-b529-3e0ebbc62a78	Новоникольск	woman_club	1979-01-01 00:00:00	good@gmail.com	Родионовна	456789	t	Маргарита	456789	1	Власова	g000d_adress	woman_1	1
-10b5b03d-4956-4724-8e76-23f885ffa166	Спасск-Дальний	woman_club	1998-01-01 00:00:00	good@gmail.com	Олеговна	\N	\N	Эвита	\N	1	Воронкова	\N	woman_3	1
-c1bcf7fa-4c1c-40a8-9c25-44b9690b513b	Михайловка	woman_club	1998-01-01 00:00:00	good@gmail.com	Евгеньевна	\N	f	Валентина	\N	1	Турейская	\N	woman_2	1
-5951b8cc-3827-41bd-8394-a205001e4ca4	Новошахтинск	man_club	1987-01-01 00:00:00	good@gmail.com	Валерьевич	\N	f	Ярослав	\N	1	Винницкий	\N	man_5	1
-284d13e9-0aed-4510-b39a-dd3ae0dff8bc	Большой Камень	man_club	1990-01-01 00:00:00	good@gmail.com	Максимович	\N	f	Иван	\N	1	Губанов	\N	man_2	1
-344efecd-6466-4ccc-84fd-994b84c79a9e	Арсеньев	man_club	2006-01-01 00:00:00	good@gmail.com	Олегович	\N	f	Матвей	\N	1	Иванов	\N	man_3	1
+96e78bbd-1b7c-49d6-80a6-4b307d8b692b	Владивосток	admin_club	1970-01-01 00:00:00	good@gmail.com	Админович	\N	f	Админ	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Админов	\N	admin	2
+490048ec-8181-4c44-ac2a-e30d03c3c4c3	Уссурийск	man_club	2000-01-01 00:00:00	good@gmail.com	Святославович	4567890	t	Ярополк	345678	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Рюрикович	g000d_adress	man_1	1
+460f602b-cd8a-419e-9281-7f1d77f92824	Артём	man_club	1999-01-01 00:00:00	good@gmail.com	Олегович	\N	f	Денис	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Кириенко	\N	man_4	1
+3b7fda1d-5c62-4903-b529-3e0ebbc62a78	Новоникольск	woman_club	1979-01-01 00:00:00	good@gmail.com	Родионовна	456789	t	Маргарита	456789	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Власова	g000d_adress	woman_1	1
+10b5b03d-4956-4724-8e76-23f885ffa166	Спасск-Дальний	woman_club	1998-01-01 00:00:00	good@gmail.com	Олеговна	\N	\N	Эвита	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Воронкова	\N	woman_3	1
+c1bcf7fa-4c1c-40a8-9c25-44b9690b513b	Михайловка	woman_club	1998-01-01 00:00:00	good@gmail.com	Евгеньевна	\N	f	Валентина	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Турейская	\N	woman_2	1
+5951b8cc-3827-41bd-8394-a205001e4ca4	Новошахтинск	man_club	1987-01-01 00:00:00	good@gmail.com	Валерьевич	\N	f	Ярослав	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Винницкий	\N	man_5	1
+284d13e9-0aed-4510-b39a-dd3ae0dff8bc	Большой Камень	man_club	1990-01-01 00:00:00	good@gmail.com	Максимович	\N	f	Иван	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Губанов	\N	man_2	1
+344efecd-6466-4ccc-84fd-994b84c79a9e	Арсеньев	man_club	2006-01-01 00:00:00	good@gmail.com	Олегович	\N	f	Матвей	\N	$2a$10$xLBDkLf4m.GhN72nUkUkCea0e5TjHV8.zlxmPjKBRRhoJ0hrVt60u	Иванов	\N	man_3	1
 \.
 
 

@@ -4,7 +4,6 @@ name: portal
 
 services:
   event-service:
-    container_name: event-service
     restart: always
     build: ./event
     environment:
@@ -17,7 +16,6 @@ services:
       - postgres-event-service
 
   postgres-event-service:
-    container_name: postgres-event-service
     image: postgres:16
     volumes:
       - ./event/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
@@ -28,7 +26,6 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
   auth-service:
-    container_name: auth-service
     restart: always
     build: ./auth
     environment:
@@ -41,7 +38,6 @@ services:
       - postgres-auth-service
 
   postgres-auth-service:
-    container_name: db
     image: postgres:16
     volumes:
       - ./auth/dumps/main.sql:/docker-entrypoint-initdb.d/main.sql
@@ -52,7 +48,6 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
   frontend:
-    container_name: frontend
     build: 
       context: ./frontend
       args:
@@ -63,7 +58,6 @@ services:
 
   nginx:
     image: nginx:1.25.4
-    container_name: nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/mime.types:/etc/nginx/mime.types

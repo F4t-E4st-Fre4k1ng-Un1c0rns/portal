@@ -21,6 +21,8 @@ dialog.login-register-dialog {
       border-radius: var(--border-radius) var(--border-radius) 0 0;
 
       position: relative;
+      container-name: nav;
+
 
       & button {
         background-color: transparent;

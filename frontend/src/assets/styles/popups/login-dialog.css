@@ -6,8 +6,6 @@ button {
 dialog.auth-dialog {
   color: var(--dark);
 
-  gap: inherit;
-
   margin-right: 0;
   margin-top: 91px;
   background-color: var(--dark);
@@ -19,6 +17,7 @@ dialog.auth-dialog {
 
   &[open] {
     display: flex;
+    gap: inherit;
   }
   flex-direction: column;
   gap: 130px;

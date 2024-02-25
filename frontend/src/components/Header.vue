@@ -16,7 +16,7 @@
       </div>
 
       <div class="group">
-        <a href="#">RUS</a>
+        <a href="#" class="language-selector">RUS</a>
         <LoginDialog />
       </div>
     </nav>

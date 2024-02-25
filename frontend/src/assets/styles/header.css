@@ -21,4 +21,10 @@ nav {
       display: none;
     }
   }
+
+  @media (width < 430px) {
+    & .language-selector {
+      display: none;
+    }
+  }
 }

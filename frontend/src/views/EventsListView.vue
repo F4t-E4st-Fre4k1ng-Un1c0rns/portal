@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import LoadingState from '@/types/loading'
 import { type EventBasic } from '@/types/event'
@@ -8,33 +8,41 @@ import EventsListItem from '@/components/eventList/EventsListItem.vue'
 
 let loaded = ref(LoadingState.Loading)
 let events: EventBasic[] | undefined = undefined
+let search = ref('')
 
-getData().then((loadedEvents: EventBasic[]) => {
-console.log(loadedEvents)
-  events = loadedEvents
-  loaded.value = LoadingState.Ok
-}).catch((error: Error) => {
-  console.error(error)
-  loaded.value = LoadingState.Error
-})
+const updateEvents = () => {
+  loaded. value = LoadingState.Loading
+  getData(search.value).then((loadedEvents: EventBasic[]) => {
+    events = loadedEvents
+    loaded.value = LoadingState.Ok
+  }).catch((error: Error) => {
+    console.error(error)
+    loaded.value = LoadingState.Error
+  })
+}
+updateEvents()
+
+watch(search, updateEvents)
 
 </script>
 
 <template>
-  <section v-if="loaded == LoadingState.Ok && events !== undefined">
+  <section>
     <div class="header">
       <h1>События</h1>
       <div class="filters">
-        <input type="text" class="shadow" placeholder="Поиск"/>
+        <input type="text" class="shadow" placeholder="Поиск" v-model="search"/>
         <button class="shadow"><img src="@/assets/images/icons/filter.svg" alt="Фильтр" /></button>
       </div>
     </div>
-    <div class="list">
+    <div class="list"  v-if="loaded == LoadingState.Ok && events !== undefined">
       <EventsListItem v-for="event in events" :event="event" />
     </div>
-  </section>
-  <section v-if="loaded == LoadingState.Error">
-    <h1>Произошла ошибка 😞</h1>
+    <div v-if="events !== undefined && events.length < 1">
+      <p>По вашему запросу ничего не найдено</p>
+    </div>
+    <p v-if="loaded == LoadingState.Loading">Пожалуйста, подождите...</p>
+    <p v-if="loaded == LoadingState.Error">Произошла ошибка 😞</p>
   </section>
 </template>
 

@@ -9,9 +9,9 @@ if (import.meta.env.VITE_MOCKING) {
 }
 
 
-function getData(): Promise<EventBasic[]> {
+function getData(query: string): Promise<EventBasic[]> {
   if (fetchingModule !== undefined) {
-    return fetchingModule.fetchData()
+    return fetchingModule.fetchData(query)
   }
   throw Error
 }

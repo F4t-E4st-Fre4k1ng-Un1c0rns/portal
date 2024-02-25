@@ -1,7 +1,7 @@
 import { type EventBasic } from '@/types/event'
 import { generateMockTickets } from './tickets'
 
-async function fetchData(): Promise<EventBasic[]> {
+async function fetchData(query: string): Promise<EventBasic[]> {
   const out: EventBasic[] = []
   out.push({
     id: '123',

@@ -37,7 +37,7 @@ class EventServise:
             query = query.filter(Event.registration_start <= datetime.utcnow())
             query = query.filter(Event.registration_end >= datetime.utcnow())
         if filter.search:
-            query = query.filter(Event.title.like(filter.search))
+            query = query.filter(Event.title.ilike(f"%{filter.search}%"))
 
         result = await session.execute(query)
         await session.close()

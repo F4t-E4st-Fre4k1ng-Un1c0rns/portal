@@ -53,10 +53,10 @@
     <p v-if="error">Что-то не так...</p>
     <input placeholder="Имя" v-model="schema.name"
       autocomplete="given-name" required />
-    <input type="email" placeholder="Электронная почта" v-model="email"
-      autocomplete="email" required />
     <input placeholder="Фамилия" v-model="schema.secondName"
       autocomplete="family-name" required />
+    <input type="email" placeholder="Электронная почта" v-model="email"
+      autocomplete="email" required />
     <input type="password" placeholder="Пароль" v-model="schema.password"
       autocomplete="new-password" required />
     <label for="birthday">
